@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        } 
+        .header{
+            width: 100%;
+            height: 800px;
+            background: linear-gradient(#ff6f69, #ffcc5c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .contWaves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .contWaves svg {
+            position: relative;
+            display: block;
+            width: calc(168% + 1.3px);
+            height: 200px;
+        }
+
+        .contWaves .shape-fill {
+            fill: #FFFFFF;
+        }
+
+        .header .img-slider{
+            position: relative;
+            width: 100%;
+            /* max-width: 1000px; */
+            height: 100%;
+        }
+        .header .img-slider .slide{
+            z-index: 1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            clip-path: circle(0% at 0 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header .img-slider .slide.active{
+            clip-path: circle(150% at 0 50%);
+            transition: 2s;
+            transition-property: clip-path;
+        }
+        /* .header .img-slider .slide h2{
+            background: red;
+            color: #fff;
+            font-size: 45px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+        } */
+
+        .header .img-slider .slide .centrador{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            height: 100%;
+
+        }
+
+        .header .img-slider .slide .centrador .contTexto{
+            width: 70%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header .img-slider .slide .centrador .contTexto .contCaja{
+            width: 100%;
+            height: 80%;
+        }
+        .header .img-slider .slide .centrador .contTexto .contCaja h2{
+            width: 100%;
+            font-size: 50px;
+            font-weight: 700;
+            padding: 2vw 0;
+            line-height: 4.5vw !important;
+            text-transform: uppercase;
+            font-family: "Open Sans", sans-serif;
+            color: #fff;
+        }
+        .header .img-slider .slide .centrador .contTexto .contCaja span{
+            width: 100%;
+            font-size: 25px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            font-family: "Open Sans", sans-serif;
+            color: #333;
+        }
+        .header .img-slider .slide .centrador .contTexto .contCaja .contBoton{
+            width: 100%;
+            margin: 3vw 0;
+        }
+        .header .img-slider .slide .centrador .contTexto .contCaja .contBoton .botonPaginaWeb{
+            padding: 1vw 2vw;
+            background: #F45C5C;
+            color: #fff;
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .header .img-slider .slide .centrador .contTexto .contCaja .contBoton .botonPaginaWeb:hover{
+        
+            background: #C93D3D;
+        }
+        .header .img-slider .slide .centrador .contImagen{
+            width: 30%;
+            height: 60%;
+            background: blue;
+        }
+        .header .img-slider .slide .centrador .contImagen img{
+            width: 100%;
+        }
+
+        .img-slider .navigation{
+            z-index: 2;
+            position: absolute;
+            display: flex;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .img-slider .navigation .btn{
+            background: rgba(255, 255, 255, 0.5);
+            width: 12px;
+            height: 12px;
+            margin: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .img-slider .navigation .btn.active{
+            background: #2696E9;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .contenido{
+            width: 100%;
+            height: 100%;
+            background: green;
+        }
+        .contEnfoque{
+            width: 100%;
+        }
+        .contEnfoque .enfoque{
+            width: 60%;
+            margin: 0 auto;
+        }
+        .contEnfoque .enfoque .tabulador{
+            overflow: hidden;
+        }
+        .contEnfoque .enfoque .tabulador  button{
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 12px 14px;
+            transition: 0.3s;
+            margin: 0 5px;
+            font-family: sans-serif;
+            font-size: 12px;
+            color: #777;
+        }
+        .contEnfoque .enfoque .contSeccion{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .contEnfoque .enfoque .contSeccion .tabuladorContent{
+            width: 100%;
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+        }
+        .contEnfoque .enfoque .contSeccion .tabuladorContent p{
+            padding: 15px 0;
+            font-size: 16px;
+            color: #666;
+            font-family: sans-serif;
+        }
+        .seccionSlider{
+            width: 100%;
+            height: 500px;
+            position: relative;
+            background: #fff;
+        }
+        .seccionSlider .seccionEnfoque{
+            width: 60%;
+            margin: 0 auto;
+        }
+        .seccionSlider .seccionEnfoque .tab{
+            overflow: hidden;
+        }
+        .seccionSlider .seccionEnfoque .tab button{
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 12px 14px;
+            transition: 0.3s;
+            margin: 0 5px;
+            font-family: sans-serif;
+            font-size: 12px;
+            color: #777;
+        }
+        .seccionSlider .seccionEnfoque .tab button:hover{
+            background-color: #3157dc;
+            color: #fff;
+        }
+        .seccionSlider .seccionEnfoque .tab button.active {
+        background-color: #3157dc;
+        color: #fff;
+        }
+        .seccionSlider .seccionEnfoque .contSeccionP{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .seccionSlider .seccionEnfoque .contSeccionP .tabcontent{
+        
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+
+        }
+        .seccionSlider .seccionEnfoque .contSeccionP .tabcontent p{
+        padding: 15px 0;
+        font-size: 16px;
+        color: #666;
+        font-family: sans-serif;
+        }
+        .contSeccionP .contImagen{
+
+        }
+        
+@media (max-width: 820px){
+  .img-slider{
+    width: 600px;
+    height: 375px;
+  }
+
+  .img-slider .slide .info{
+    padding: 10px 25px;
+  }
+
+  .img-slider .slide .info h2{
+    font-size: 35px;
+  }
+
+  .img-slider .slide .info p{
+    width: 70%;
+    font-size: 15px;
+  }
+
+  .img-slider .navigation{
+    bottom: 25px;
+  }
+
+  .img-slider .navigation .btn{
+    width: 10px;
+    height: 10px;
+    margin: 8px;
+  }
+}
+
+@media (max-width: 620px){
+  .img-slider{
+    width: 400px;
+    height: 250px;
+  }
+
+  .img-slider .slide .info{
+    padding: 10px 20px;
+  }
+
+  .img-slider .slide .info h2{
+    font-size: 30px;
+  }
+
+  .img-slider .slide .info p{
+    width: 80%;
+    font-size: 13px;
+  }
+
+  .img-slider .navigation{
+    bottom: 15px;
+  }
+
+  .img-slider .navigation .btn{
+    width: 8px;
+    height: 8px;
+    margin: 6px;
+  }
+}
+
+@media (max-width: 420px){
+  .img-slider{
+    width: 320px;
+    height: 200px;
+  }
+
+  .img-slider .slide .info{
+    padding: 5px 10px;
+  }
+
+  .img-slider .slide .info h2{
+    font-size: 25px;
+  }
+
+  .img-slider .slide .info p{
+    width: 90%;
+    font-size: 11px;
+  }
+
+  .img-slider .navigation{
+    bottom: 10px;
+  }
+}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/js/NewLayout.js"></script>
+        
+    <script>
+            var NuestraPagina = {};
+        NuestraPagina.NewLayout = new NewLayout();
+    </script>
+</head>
+<body>
+    <%- body %>
+
+    <script>
+        var slides = document.querySelectorAll('.slide');
+        var btns = document.querySelectorAll('.btn')
+
+        let currentSlide = 1;
+
+        var manualNav = function(manual){
+            slides.forEach((slide)=>{
+                slide.classList.remove('active');
+                btns.forEach((btn)=>{
+                    btn.classList.remove('active');
+                });
+            });
+
+            slides[manual].classList.add('active');
+            btns[manual].classList.add('active');
+
+        }
+        btns.forEach((btn, i)=>{
+            btn.addEventListener("click",()=>{
+                manualNav(i);
+                currentSlide = i;
+            });
+        });
+
+        var repeat = function(activeClass){
+            let active = document.getElementsByClassName('active');
+            let i = 1;
+
+            var repeater = ()=>{
+                setTimeout(function(){
+                    [...active].forEach((activeSlide)=>{
+                        activeSlide.classList.remove('active');
+                    });
+                    slides[i].classList.add('active');
+                    btns[i].classList.add('active');
+                    i++;
+
+                    if(slides.length == i){
+                        i= 0;
+                    }
+                    if(i >= slides.length){
+                        return;
+                    }
+                    repeater();
+                }, 10000);
+            }
+            repeater();
+        }
+        repeat();
+
+        var counter = 1;
+    setInterval(function(){
+    //   document.getElementById('radio' + counter).checked = true;
+      counter++;
+      if(counter > 4){
+        counter = 1;
+      }
+    }, 10000);
+
+ 
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
+</body>
+</html>

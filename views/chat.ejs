@@ -1,0 +1,248 @@
+<%- layout('layouts/chatMain') %>
+<!-- 
+<div class="cont-chat">
+    <div class="centrador">
+        <div class="cont-boxMensajes">
+            <div class="centrador1" id="display-data-Container">
+           
+            </div>
+        </div>
+        <div class="cont-form">
+            <div class="centrador2">
+                <form>
+                    <div class="seccionInput">
+                        <input autoComplete="off" type="text" id="elMensaje" name="elMensaje" onchange="ChatIdeasWeb.ChatScripts.changeHandler()" autoFocus />
+                    </div>
+                    <div class="seccionBoton">
+                        <div class="centrando">
+                            <button onclick="ChatIdeasWeb.ChatScripts.submitHandler(event)" class="desactivado" id="botonEnvio">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var params = new URLSearchParams(window.location.search);
+    var socket = io();
+    var displayData = '';
+    var usuario = localStorage.getItem('usuario');
+    var sala = params.get('sala');
+    socket.on('connect', ()=>{
+           
+            socket.emit('entrarChat', {nombre: usuario, sala: sala}, function(resp){
+                console.log('Usuarios conectados:', resp);
+            });
+        });
+        
+        socket.on('crearMensaje', (data)=>{
+            console.log('Servidor: ',data);
+            
+           if(data.email != usuario){
+            $('#display-data-Container').append(
+            `<div class="cont-mensaje animated fadeIn">`+
+                    `<div class="box bg-light-inverse" id="display-data">${data.mensaje}</div>`+
+                `</div>`
+           );
+                
+           }
+           
+           
+            
+            var contchat = document.getElementById("display-data-Container");
+            
+            contchat.scrollTo(0, contchat.scrollHeight)
+        });
+        socket.on('mensajeSala', function(mensaje){
+            
+        });
+        
+
+        
+        socket.on('listaPersona', function(personas){
+            console.log(personas);
+        });
+
+        socket.on('mensajePrivado', function(mensaje){
+            console.log("Mensaje privado: ",mensaje);
+        })
+
+        document.getElementById("botonEnvio").disabled = true;
+
+
+        var data = {
+        'sala': sala
+        };
+
+        var settings = {
+            url: '/getMensajes',
+            "method": "POST",
+            "timeout": 0,
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded', 
+                
+            },
+            data : data
+          };
+          
+          $.ajax(settings).done(function (response) {
+                console.log(response);
+            if(response.length == 0){
+                displayData += '';
+            }else{
+                response.map((mensajes)=>{
+                    if(mensajes.email == usuario){
+                        displayData +=
+                            '<div class="cont-mensaje animated fadeIn">'+
+                                '<div class="box bg-light-info" id="display-data">'+mensajes.mensaje+'</div>'+
+                            '</div>';
+                        
+                    }else{
+                        displayData +=
+                            '<div class="cont-mensaje animated fadeIn">'+
+                                '<div class="box bg-light-inverse" id="display-data" >'+mensajes.mensaje+'</div>'+
+                            '</div>';
+                        
+                    }
+                    
+                });
+            }
+                
+
+                $('#display-data-Container').append(displayData);
+
+                 var contchat = document.getElementById("display-data-Container");
+                 
+                 contchat.scrollTo(0, contchat.scrollHeight)
+
+                
+            })
+</script> -->
+
+
+
+
+
+<div class="contBody">
+   <div class="contenedorChat">
+       <div class="contMensajes">
+            <div class="centrador1" id="display-data-Container">
+                
+            </div>
+       </div>
+       <div class="contInput">
+            <form>
+                <div class="seccionInput">
+                    <input autoComplete="off" type="text" id="elMensaje" name="elMensaje" onkeyup="ChatIdeasWeb.ChatScripts.changeHandler()" autoFocus />
+                </div>
+                <div class="seccionBoton">
+                    <!-- <div class="centrando"> -->
+                        <button onclick="ChatIdeasWeb.ChatScripts.submitHandler(event)" class="desactivado" id="botonEnvio">Enviar</button>
+                    <!-- </div> -->
+                </div>
+            </form>
+       </div>
+   </div>
+</div>
+
+
+<script>
+var params = new URLSearchParams(window.location.search);
+var socket = io();
+var displayData = '';
+var usuario = localStorage.getItem('usuario');
+var sala = params.get('sala');
+socket.on('connect', ()=>{
+        // console.log("conectado al servidor")
+        socket.emit('entrarChat', {nombre: usuario, sala: sala}, function(resp){
+            console.log('Usuarios conectados:', resp);
+        });
+    });
+
+    
+    socket.on('crearMensaje', (data)=>{
+        console.log('Servidor: ',data);
+        
+       if(data.email != usuario){
+        $('#display-data-Container').append(
+        `<div class="cont-mensaje animated fadeIn">`+
+                `<div class="box bg-light-inverse" id="display-data">${data.mensaje}</div>`+
+            `</div>`
+       );
+            
+       }
+       
+       
+        
+        var contchat = document.getElementById("display-data-Container");
+        
+        contchat.scrollTo(0, contchat.scrollHeight)
+    });
+    socket.on('mensajeSala', function(mensaje){
+        
+    });
+    
+
+    
+    socket.on('listaPersona', function(personas){
+        console.log(personas);
+    });
+
+    socket.on('mensajePrivado', function(mensaje){
+        console.log("Mensaje privado: ",mensaje);
+    })
+
+    document.getElementById("botonEnvio").disabled = true;
+
+
+    var data = {
+    'sala': sala
+    };
+
+    var settings = {
+        url: '/getMensajes',
+        "method": "POST",
+        "timeout": 0,
+        headers: { 
+            'Content-Type': 'application/x-www-form-urlencoded', 
+            
+        },
+        data : data
+      };
+      
+      $.ajax(settings).done(function (response) {
+            console.log(response);
+        if(response.length == 0){
+            displayData += '';
+        }else{
+            response.map((mensajes)=>{
+                if(mensajes.email == usuario){
+                    displayData +=
+                        '<div class="cont-mensaje animated fadeIn">'+
+                            '<div class="box bg-light-info" id="display-data">'+mensajes.mensaje+'</div>'+
+                        '</div>';
+                    
+                }else{
+                    displayData +=
+                        '<div class="cont-mensaje animated fadeIn">'+
+                            '<div class="box bg-light-inverse" id="display-data" >'+mensajes.mensaje+'</div>'+
+                        '</div>';
+                    
+                }
+                
+            });
+        }
+            
+
+            $('#display-data-Container').append(displayData);
+
+             var contchat = document.getElementById("display-data-Container");
+             
+             contchat.scrollTo(0, contchat.scrollHeight)
+
+            //  console.log("sala: ", this.state.sala);
+            // console.log("usuario: ", localStorage.getItem("Usuario"))
+        })
+</script>

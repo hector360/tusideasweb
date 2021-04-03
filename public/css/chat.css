@@ -1,0 +1,123 @@
+.cont-chat{
+    background: red;
+    width: 100%;
+    padding-top: 20px;
+}
+.cont-chat .centrador{
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #ddd;
+}
+.cont-chat .centrador .cont-boxMensajes{
+    width: 100%;
+    
+}
+.cont-chat .centrador .cont-boxMensajes .centrador {
+    width: 90%;
+    min-height: 500px;
+    max-height: 500px;
+    margin: 0 auto;
+    background: #ccc;
+    border-radius: 0;
+    overflow-y: auto;
+    
+}
+
+.cont-chat .centrador .cont-form{
+    width: 100%;
+}
+.cont-chat .centrador .cont-form .centrador{
+    width: 90%;
+    margin: 0 auto;
+    background: #B7EAFF;
+    padding: 10px;
+    border-radius: 0;
+}
+.cont-chat .centrador .cont-form .centrador form{
+    width: 100%;
+    overflow: hidden;
+}
+.cont-chat .centrador .cont-form .centrador form .seccionInput{
+    width: 80%;
+    float: left;
+}
+.cont-chat .centrador .cont-form .centrador form .seccionInput input{
+    width: 100%;
+    border: none;
+    /* margin: 5px 10px; */
+    padding: 9px 12px 11px;
+    /* background-color: var(--compose-input-background); */
+    border: none;
+    border-radius: 21px;
+}
+.cont-chat .centrador .cont-form .centrador form .seccionBoton{
+    width: 20%;
+    float: left;
+}
+.cont-chat .centrador .cont-form .centrador form .seccionBoton .centrando{
+    width: 50%;
+    margin: 0 auto;
+}
+.cont-chat .centrador .cont-form .centrador form .seccionBoton .centrando button{
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    padding: 9px 12px 11px;
+    background: #F4DF4B;
+    color: #fff;
+}
+
+.cont-mensaje {
+    width: 100%;
+    overflow: hidden;
+}
+.cont-mensaje .bg-light-info {
+    background-color: #cfecfe;
+    float: right;
+}
+.cont-mensaje .box {
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px;
+    /* box-sizing: content-box; */
+    /* max-width: 300px; */
+    
+    
+    width: max-content;
+    max-width: 300px;
+    word-wrap: break-word;
+    /* position: relative;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    white-space: pre-wrap; */
+    
+}
+
+.cont-mensaje .bg-light-inverse {
+    background-color: #f6f6f6;
+    float: left;
+}
+
+.cont-chat .centrador .cont-form .centrador form .seccionBoton .centrando .desactivado{
+    background: #ccc;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    /* background: #f1f1f1;  */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

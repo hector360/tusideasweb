@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/estilosLayout.css">
+    <link rel="stylesheet" href="/css/estilosPrincipal.css">
+    <script src="https://kit.fontawesome.com/9c077ec98e.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/js/WebIdeasScripts.js"></script>
+    <script>
+            var NuestraPagina = {};
+        NuestraPagina.WebIdeasScripts = new WebIdeasScripts();
+    </script>
+
+</head>
+<body>
+    <header>
+        <div class="seccionLogo"> 
+            <div class="contImagen">
+                <img src="/img/nuevasimg/logo2.png" />
+            </div>  
+        </div>
+        <div class="seccionMenu">
+            <ul>
+                <li>Inicio</li>
+                <li>Contacto</li>
+                <li>¿Qué Hacemos?</li>
+            </ul>
+        </div>
+    </header>
+    <%- body %>
+    <script>
+        $(document).ready(function () {
+        // NuestraPagina.IdeasWebScripts.mostrarMensajes();
+            $(window).on('scroll', function () {
+            if ($(window).scrollTop() > 50) {
+                $('header').addClass('fixed-menu');
+            } else {
+                $('header').removeClass('fixed-menu');
+            }
+
+        });
+        
+	});
+    </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .contHeader{
+            width: 100%;
+            display: flex;
+        }
+        .contHeader .seccionLogo{
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .contHeader .seccionLogo .contImagen{
+            width: 50%;
+        }
+        .contHeader .seccionLogo .contImagen img{
+            width: 100%;
+        }
+        
+        .contBody{
+            background: #ccc;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .contBody .contenedorChat{
+            width: 70%;
+            height: 90%;
+            max-height: 40vw;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        .contBody .contenedorChat .contMensajes{
+            background-image: url("/img/fondo_3.png");
+            background-color: #cccccc;
+            width: 100%;
+            height: 90%;
+            border-radius: 8px 8px 0 0;
+        }
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+        background: none; 
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: rgba(181, 181, 181, 0.6);
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+        }
+        .contBody .contenedorChat .contMensajes .centrador1{
+            /* background: yellow; */
+            width: 100%;
+            margin: 0 auto;
+            height: 100%;
+            border-radius: 0;
+            overflow-y: auto;
+        }
+        .contBody .contenedorChat .contInput{
+            background: #ddd;
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
+        }
+        .contBody .contenedorChat .contInput form{
+            width: 100%;
+            display: flex;
+        }
+        .contBody .contenedorChat .contInput form .seccionInput{
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .contBody .contenedorChat .contInput form .seccionInput input{
+            width: 90%;
+            padding: 15px;
+            border-radius: 21px;
+            box-sizing: border-box;
+        }
+        .contBody .contenedorChat .contInput form .seccionInput input:focus{
+            outline: none;
+        }
+        .contBody .contenedorChat .contInput form .seccionBoton{
+            width: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .contBody .contenedorChat .contInput form .seccionBoton button{
+            /* width: 10%;
+            background: yellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center; */
+            background: #56B4DD;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .cont-mensaje {
+            width: 100%;
+            overflow: hidden;
+        }
+        .cont-mensaje .bg-light-info {
+            background-color: #cfecfe;
+            float: right;
+        }
+        .cont-mensaje .box {
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 30px;
+            width: max-content;
+            max-width: 300px;
+            word-wrap: break-word;
+            font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        .cont-mensaje .bg-light-inverse {
+            background-color: #f6f6f6;
+            float: left;
+        }
+        .contHeader .seccionMenu{
+            width: 80%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+        .navbar-nav{
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 4vw;
+        }
+        .navbar-nav li{
+            list-style: none;
+            display: flex;
+        }
+        
+        .navbar-nav li a{
+            text-transform: uppercase;
+            font-size: 15px;
+            padding: 7px 20px;
+            position: relative;
+            font-weight: 400;
+            overflow: hidden;
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/js/ChatScripts.js"></script>
+
+        <script>
+            var ChatIdeasWeb = {};
+            ChatIdeasWeb.ChatScripts = new ChatScripts();
+            
+        </script>
+</head>
+<body>
+    <div class="contHeader">
+        <div class="seccionLogo">
+            <a href="/" class="contImagen">
+                <img src="/img/nuevasimg/logo2.png" />
+            </a>
+        </div>
+        <div class="seccionMenu">
+            <ul class="navbar-nav">
+                <i><a class="nav-link active fa fa-phone" aria-hidden="true" href="/"> 998-49-939</a></i>
+                <i><a style="resize:53px;" class="nav-link active fa fa-whatsapp" aria-hidden="true" href="/"> 998-49-939</a></i>
+                
+                <li><a class="nav-link active" href="/">Inicio</a></li>
+                
+                <li><a class="nav-link" href="/contacto">Contacto</a></li>
+                <li><a  class="nav-link active" href="#section1" style="background:#f2184f;color:#fff;" >¿Qué hacemos?</a></li>
+            </ul>
+        </div>
+    </div>
+    <%- body %>
+
+    <script>
+        $(document).ready(function () {
+            var params = new URLSearchParams(window.location.search);
+            let usuario = localStorage.getItem('usuario');
+            var sala = params.get('sala');
+       
+           
+           if(usuario == null || sala == null){
+            window.location.href = "/";
+           }
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<%- layout('layouts/layoutLanding') %>
+<style>
+    .cont-paquetes{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cont-paquetes .centrador{
+        width: 90%;
+        /*margin: 0 auto;*/
+        display: inline-flex;
+    }
+    .cont-paquetes .centrador .parte1{
+        width: 50%;
+        /*margin: 0 auto;*/
+        padding-top: 8vw;
+        padding-bottom: 4vw;
+    }
+    .cont-paquetes .centrador .parte1 .cont-titulo{
+        width: 100%;
+    }
+    .cont-paquetes .centrador .parte1 .cont-titulo h2{
+        width: 100%;
+        font-size: 34px;
+    }
+    .cont-paquetes .centrador .parte1 .cont-titulo .linea-naranja{
+        width: 30%;
+        border-bottom: 4px solid #C1423E;
+    }
+    .cont-paquetes .centrador .parte1 .cont-body{
+        padding: 30px 0;
+    }
+    .cont-paquetes .centrador .parte2{
+         width: 50%;
+        /*margin: 0 auto;*/
+        padding-top: 8vw;
+         display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 4vw;
+    }
+    .cont-paquetes .centrador .parte2 .cont-imagenP{
+
+    }
+     .cont-paquetes .centrador .parte2 .cont-imagenP img{
+         width: 100%;
+     }
+     .subtitulo{
+         font-size: 20px;
+         color: #07034D;
+         list-style-type: circle;
+     }
+
+     .contContacto{
+         width: 100%;
+     }
+     .contContacto .centrando{
+         width: 40%;
+         margin: 0 auto;
+     }
+     .contContacto .centrando h2{
+         width: 100%;
+         font-size: 24px;
+         padding: 2vw 0;
+     }
+     .contContacto .centrando form input{
+         color: #fff !important;
+     }
+     .contContacto .centrando form textarea{
+         color: #fff !important;
+     }
+     .pop .contMensajeContacto{
+        width: 100%;
+    }
+
+    .pop .contMensajeContacto .mensajeContacto{
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+        padding: 1vw;
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+         
+</style>
+
+<div class="cont-paquetes">
+    <div class="centrador">
+        <div class="parte1">
+            <div class="cont-titulo">
+                <div id="cont-titulo">
+                    
+                </div>
+                
+                <div class="linea-naranja"></div>
+            </div>
+
+            <div class="cont-body">
+                <div id="cont-descripcion">
+
+                </div>
+                <ul id="cont-lista">
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="parte2">
+            <div class="cont-imagenP" id="cont-imagenP">
+                <!-- <img src="img/paquetebasico.jpg" /> -->
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+<div class="contContacto">
+    <div class="centrando">
+        <div class="pop" id="pop"></div>
+        <h2>Contactanos</h2>
+        <div class="contact-block">
+            <form id="#">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group espaciado">
+                            <input type="text" class="form-control" id="nombrescontacto" name="name" placeholder="Tu nombre" required data-error="Please enter your name">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 espaciado">
+                        <div class="form-group">
+                            <input type="text" placeholder="Tu correo" id="correo" class="form-control" name="name" required data-error="Please enter your email">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 espaciado">
+                        <div class="form-group">
+                            <input type="text" placeholder="Tu numero" id="telefono" class="form-control" name="number" required data-error="Please enter your number">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 espaciado">
+                        <div class="form-group">
+                            <textarea class="form-control" id="mensaje" placeholder="Tus ideas" rows="8" data-error="Write your message" required></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="submit-button text-center">
+                            <div onclick="NuestraPagina.IdeasWebScripts.mandarContacto()" class="btn btn-common">Enviar mensaje</div>
+                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ 
+<script>
+    $(document).ready(function () {
+        NuestraPagina.IdeasWebScripts.paqueteScripts();
+
+    });
+
+</script>

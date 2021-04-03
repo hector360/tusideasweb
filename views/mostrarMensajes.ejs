@@ -1,0 +1,66 @@
+<%- layout('layouts/main') %>
+
+<style>
+    .contMensajes{
+        width: 100%;
+    }
+    .contMensajes .centrador{
+        width: 80%;
+        padding: 2vw 0;
+        margin: 0 auto;
+    }
+    .tituloFila{
+        width: 100%;
+        background: #ECECEC;
+    }
+    .tituloFila th{
+        padding: 1vw;
+        text-align: center;
+    }
+    .fila{
+        width: 100%;
+        background: #ccc;
+    }
+    .fila td{
+        /* width: 100%; */
+        padding: 1vw;
+        text-align: left;
+    }
+    .Par{
+        background: #F0F0F0;
+    }
+    .Impar{
+        background: #F7F7F7;
+    }
+</style>
+<div class="contMensajes">
+    <div class="centrador">
+        <table id="table_id" class="display">
+            <thead>
+                <tr class="tituloFila">
+                    <th>Nombre Contacto</th>
+                    <th>Telefono Contacto</th>
+                    <th>Correo Contacto</th>
+                    <th>Mensaje</th>
+                    <th>Fecha</th>
+                    <th>Status</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody id="losmensajes">
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        NuestraPagina.IdeasWebScripts.mostrarMensajes();
+        // var datatable = $('#table_id').DataTable();
+    });
+    
+    // $(document).ready( function () {
+    //     $('#table_id').DataTable();
+    // } );
+</script>

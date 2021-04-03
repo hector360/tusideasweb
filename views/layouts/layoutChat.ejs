@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/css/chat.css"> -->
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .cont-chat{
+            background: #F0F0F0;
+            width: 100%;
+            height: 100%;
+            /* padding-top: 20px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .cont-chat .centrador{
+            width: 70%;
+            height: 80%;
+            margin: 0 auto;
+            border-radius: 12px;
+            background: #ddd;
+            display: flex;
+            flex-direction: column;
+        }
+        .cont-chat .centrador .cont-boxMensajes{
+            width: 100%;
+            height: 80%;
+            display: flex;
+        }
+        .cont-chat .centrador .cont-boxMensajes .centrador1 {
+            width: 90%;
+            /* min-height: 500px;
+            max-height: 500px; */
+            /* height: 40vw; */
+            
+            margin: 0 auto;
+            background: #ccc;
+            border-radius: 0;
+            overflow-y: auto;
+            
+        }
+
+        .cont-chat .centrador .cont-form{
+            width: 100%;
+            display: flex;
+        }
+        .cont-chat .centrador .cont-form .centrador2{
+            width: 90%;
+            height: 100%;
+            margin: 0 auto;
+            /* background: #B7EAFF; */
+            padding: 10px;
+            border-radius: 0;
+        }
+        .cont-chat .centrador .cont-form .centrador2 form{
+            width: 100%;
+            overflow: hidden;
+        }
+        .cont-chat .centrador .cont-form .centrador2 form .seccionInput{
+            width: 80%;
+            float: left;
+        }
+        .cont-chat .centrador .cont-form .centrador2 form .seccionInput input{
+            width: 100%;
+            border: none;
+            /* margin: 5px 10px; */
+            padding: 9px 12px 11px;
+            /* background-color: var(--compose-input-background); */
+            border: none;
+            border-radius: 21px;
+        }
+        .cont-chat .centrador .cont-form .centrador2 form .seccionBoton{
+            width: 20%;
+            float: left;
+        }
+        .cont-chat .centrador .cont-form .centrador2 form .seccionBoton .centrando{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .cont-chat .centrador .cont-form .centrador2 form .seccionBoton .centrando button{
+            width: 100%;
+            border-radius: 12px;
+            border: none;
+            padding: 9px 12px 11px;
+            background: #F4DF4B;
+            color: #fff;
+        }
+
+        .cont-mensaje {
+            width: 100%;
+            overflow: hidden;
+        }
+        .cont-mensaje .bg-light-info {
+            background-color: #cfecfe;
+            float: right;
+        }
+        .cont-mensaje .box {
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px;
+            /* box-sizing: content-box; */
+            /* max-width: 300px; */
+            
+            
+            width: max-content;
+            max-width: 300px;
+            word-wrap: break-word;
+            /* position: relative;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            box-sizing: border-box;
+            white-space: pre-wrap; */
+            
+        }
+
+        .cont-mensaje .bg-light-inverse {
+            background-color: #f6f6f6;
+            float: left;
+        }
+
+        .cont-chat .centrador .cont-form .centrador2 form .seccionBoton .centrando .desactivado{
+            background: #ccc;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            /* background: #f1f1f1;  */
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+        .contHeader{
+            width: 100%;
+            display: flex;
+        }
+        .contHeader .seccionLogo{
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .contHeader .seccionLogo .contImagen{
+            width: 50%;
+        }
+        .contHeader .seccionLogo .contImagen img{
+            width: 100%;
+        }
+        .contHeader .seccionMenu{
+            width: 80%;
+        }
+        .cont-abajo{
+            display: flex;
+            background: red;
+            height: 100%;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/js/ChatScripts.js"></script>
+    <!-- <script>
+        var socket = io();
+        socket.on('connect', function(){
+            console.log('conectando al servidor')
+        })
+    </script> -->
+        <script>
+            var ChatIdeasWeb = {};
+            ChatIdeasWeb.ChatScripts = new ChatScripts();
+            
+        </script>
+        
+</head>
+<body>
+    <div class="contHeader">
+        <div class="seccionLogo">
+            <div class="contImagen">
+                <img src="/img/nuevasimg/logo2.png" />
+            </div>
+        </div>
+        <div class="seccionMenu">
+
+        </div>
+    </div>
+    <div class="cont-abajo">
+        <%- body %>
+    </div>
+    
+
+  
+</body>
+</html>

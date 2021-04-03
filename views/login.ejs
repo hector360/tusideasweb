@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html{
+            margin: 0;
+            padding: 0;
+        }
+        .contPrincipal{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .contPrincipal .centrador{
+            width: 25vw;
+            min-width: 250px;
+        }
+        .contPrincipal .centrador form{
+            width: 100%;
+            padding: 2vw;
+            border-radius: 5px;
+            background: #FBFBFB;
+        }
+        .contPrincipal .centrador form .contSeccion{
+            width: 100%;
+        }
+        .contPrincipal .centrador form .contSeccion h2{
+            width: 100%;
+            font-size: 34px;
+            margin: 1vw 0;
+        }
+        .contPrincipal .centrador form .contSeccion input{
+            width: 100%;
+            margin: 1vw 0;
+            padding: 1vw;
+            box-sizing: border-box;
+        }
+        .contPrincipal .centrador form .contSeccion img{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .contPrincipal .centrador form .contSeccion button{
+            width: 100%;
+            box-sizing: border-box;
+            margin: 1vw 0;
+            padding: 1.5vw;
+            color: #fff;
+            border: none;
+            font-size: 20px;
+            background: #D85C5C;
+        }
+        .contPrincipal .centrador form .contSeccion button:hover{
+            background: #BD4040;
+
+        }
+        .mensajeError{
+            width: 100%;
+            background: #DB85A3;
+            border-radius: 8px;
+            color: #7A0F35 !important;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="contPrincipal">
+       <div class="centrador">
+            <form action="/signin" method="POST">
+                <div class="contSeccion">
+                    <img src="/img/logo2.png">
+                </div>
+                <%if(signinMessage && signinMessage != ""){ %>
+                    <div class="cont-seccion"><h2 class="mensajeError"><%= signinMessage %></h2></div>
+                <% } %>
+                <div class="contSeccion">
+                    <h2>Correo</h2>
+                    <input type="text" name="email" id="email" />
+                </div>
+                <div class="contSeccion">
+                    <h2>Contraseña</h2>
+                    <input type="password" name="password" id="password" />
+                </div>
+                <div class="contSeccion">
+                   <button type="submit">Enviar</button>
+            </form>
+       </div>
+    </div>
+</body>
+</html>
