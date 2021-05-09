@@ -66,6 +66,7 @@ app.use((req,res, next)=>{
 app.use('/', require('./routes/index'));
 
 
+
 server.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
   // sequelize.authenticate().then(()=>{
