@@ -8,12 +8,23 @@
 //     }
 // }
 
+// module.exports = {
+//     database: {
+//         password: "+Qm~(*XS5[QO",
+//         username: "upczymuy_upczymuy",
+//         database: "upczymuy_tusideasweb",
+//         host: "50.31.176.21",
+//         port: 3306,
+//     }
+// }
+
+
 module.exports = {
     database: {
         password: "+Qm~(*XS5[QO",
-        username: "upczymuy_upczymuy",
-        database: "upczymuy_tusideasweb",
-        host: "50.31.176.21",
+        username: "admin_upczymuy",
+        database: "admin_tusideasweb",
+        host: "45.55.51.136",
         port: 3306,
     }
 }
